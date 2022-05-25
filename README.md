@@ -1,8 +1,8 @@
 # PLATFORMER-HELL
 Controls:
 
-A - Left
-D - Right
-W - Jump
-Spacebar - talk to npcs
-R - reset
+A - Left \n
+D - Right \n
+W - Jump \n
+Spacebar - talk to npcs \n
+R - reset \n
