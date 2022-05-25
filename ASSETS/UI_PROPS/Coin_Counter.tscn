@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://ASSETS/BBBOcelot-Smooth.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://ASSETS/BBBOcelot-Regular.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://ASSETS/WORLD_ASSETS/COIN_ANIMATION/Coin_Animate_1.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/HUD.gd" type="Script" id=4]
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.0705882, 0.0666667, 0.0666667, 1 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="DynamicFont" id=6]
+size = 9
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 13
+font_data = ExtResource( 2 )
+
+[node name="Coin_Counter" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 269.0
+margin_top = 156.0
+margin_right = 308.0
+margin_bottom = 170.0
+custom_styles/panel = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 270.0
+margin_top = 154.0
+margin_right = 289.0
+margin_bottom = 170.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 288.0
+margin_top = 159.0
+margin_right = 328.0
+margin_bottom = 175.0
+custom_colors/font_color = Color( 0.992157, 1, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "x"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CoinCounter" type="Label" parent="."]
+margin_left = 295.0
+margin_top = 158.0
+margin_right = 335.0
+margin_bottom = 174.0
+custom_colors/font_color = Color( 0.992157, 1, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}

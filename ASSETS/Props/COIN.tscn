@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://ASSETS/WORLD_ASSETS/COIN_ANIMATION/Coin_Animate_2.png" type="Texture" id=1]
+[ext_resource path="res://ASSETS/WORLD_ASSETS/COIN_ANIMATION/Coin_Animate_1.png" type="Texture" id=2]
+[ext_resource path="res://ASSETS/WORLD_ASSETS/COIN_ANIMATION/Coin_Animate_3.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/COIN.gd" type="Script" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 9.0
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "COIN_SPIN",
+"speed": 2.0
+} ]
+
+[node name="COIN" type="Area2D"]
+collision_layer = 0
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+animation = "COIN_SPIN"
+playing = true
+
+[connection signal="body_entered" from="." to="." method="_on_COIN_body_entered"]

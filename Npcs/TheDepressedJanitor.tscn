@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/TheDepressedJanitor.gd" type="Script" id=1]
+[ext_resource path="res://ASSETS/WORLD_ASSETS/TheDepressedJanitor.png" type="Texture" id=2]
+[ext_resource path="res://dialogue_box_template.tscn" type="PackedScene" id=3]
+
+[sub_resource type="CircleShape2D" id=28]
+radius = 27.0
+
+[node name="TheDepressedJanitor" type="Area2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 483, 178 )
+shape = SubResource( 28 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 483.75, 179.375 )
+scale = Vector2( 1.65625, 1.54687 )
+texture = ExtResource( 2 )
+
+[node name="Dialogue_Box" type="Node2D" parent="." instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 117, 91 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[connection signal="body_entered" from="." to="." method="_on_TheDepressedJanitor_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_TheDepressedJanitor_body_exited"]

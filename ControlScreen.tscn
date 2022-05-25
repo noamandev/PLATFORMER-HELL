@@ -1,0 +1,165 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://ASSETS/BBBOcelot-Regular.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/BackButton Controls to Menu.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.443137, 0, 0, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 10
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 8
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 11
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.443137, 0, 0, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 320.0
+margin_bottom = 180.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -139.5
+margin_top = -76.0
+margin_right = 139.5
+margin_bottom = 76.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ControlsLabel" type="Label" parent="ColorRect/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -101.0
+margin_top = -45.0
+margin_right = 24.0
+margin_bottom = -29.0
+rect_scale = Vector2( 1.04298, 1.09593 )
+custom_fonts/font = SubResource( 2 )
+text = "CONTROLS:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="ColorRect/Panel/ControlsLabel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -51.5
+margin_top = 4.0
+margin_right = 24.5
+margin_bottom = 20.0
+custom_fonts/font = SubResource( 3 )
+text = "A - Left"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="ColorRect/Panel/ControlsLabel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -50.9945
+margin_top = 16.8489
+margin_right = 25.0055
+margin_bottom = 32.8489
+custom_fonts/font = SubResource( 3 )
+text = "D - Right"
+
+[node name="Label4" type="Label" parent="ColorRect/Panel/ControlsLabel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -51.9533
+margin_top = 32.3608
+margin_right = 24.0467
+margin_bottom = 48.3608
+custom_fonts/font = SubResource( 3 )
+text = "W - Jump"
+
+[node name="Label5" type="Label" parent="ColorRect/Panel/ControlsLabel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -51.9533
+margin_top = 47.8728
+margin_right = 119.047
+margin_bottom = 63.8728
+custom_fonts/font = SubResource( 3 )
+text = "Spacebar- Talk to Npcs!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ColorRect/Panel"]
+margin_left = 2.5
+margin_top = 142.0
+margin_right = 106.5
+margin_bottom = 156.0
+custom_fonts/font = SubResource( 4 )
+text = "Made with Godot"
+
+[node name="BackButton ( Controls -> Menu)" type="Button" parent="."]
+margin_left = 243.0
+margin_top = 144.0
+margin_right = 296.0
+margin_bottom = 163.0
+custom_fonts/font = SubResource( 5 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/disabled = SubResource( 6 )
+custom_styles/normal = SubResource( 6 )
+text = "Back"
+script = ExtResource( 2 )
+
+[connection signal="pressed" from="BackButton ( Controls -> Menu)" to="BackButton ( Controls -> Menu)" method="_on_BackButton__Controls__Menu_pressed"]

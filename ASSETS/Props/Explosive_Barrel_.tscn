@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://ASSETS/WORLD_ASSETS/Explosive_Barrel1.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Explosive_Barrel.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 5.5, 7.5 )
+
+[sub_resource type="StreamTexture" id=10]
+load_path = "res://.import/Explosion_1.png-fc88481db6164eda4b08d079f4900188.stex"
+
+[sub_resource type="StreamTexture" id=11]
+load_path = "res://.import/Explosion_2.png-a8f007eade41b759eb25107490876ffa.stex"
+
+[sub_resource type="StreamTexture" id=12]
+load_path = "res://.import/Explosion_3.png-c64955f520da9c827ec41924355d7858.stex"
+
+[sub_resource type="StreamTexture" id=13]
+load_path = "res://.import/Explosion_4.png-b6a1bce3a7892827fa3d38c6cc0f5afb.stex"
+
+[sub_resource type="StreamTexture" id=14]
+load_path = "res://.import/Explosion_5.png-c45234e4811b048e24f57d2a76a318ec.stex"
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"loop": false,
+"name": "explosion",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "static",
+"speed": 5.0
+} ]
+
+[node name="Explosive_Barrel_" type="Area2D"]
+position = Vector2( 104, 0 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 108, 104 )
+shape = SubResource( 9 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 108, 104 )
+frames = SubResource( 8 )
+animation = "static"
+playing = true
+
+[connection signal="body_entered" from="." to="." method="_on_Explosive_Barrel__body_entered"]
