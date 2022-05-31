@@ -2,10 +2,13 @@ extends Node
 
 var coins = 0
 var health = 10
+var goons_killed = 0
+var socializationXP = 0
 var ENTERED_DOOR : bool
 
 # warning-ignore:shadowed_variable
 func queue_text(dialogue_box: Node, text, queue_text_max, CHAR_READ_RATE: float, reset_point):
+	print(typeof(queue_text_max))
 	if queue_text_max >= reset_point:
 		dialogue_box.visible = false
 		queue_text_max = -2

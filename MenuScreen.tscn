@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://ASSETS/BBBOcelot-Regular.otf" type="DynamicFontData" id=1]
-[ext_resource path="res://Scripts/PlayButton.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Button.gd" type="Script" id=2]
 [ext_resource path="res://ASSETS/UI_PROPS/PlayButton.tres" type="StyleBox" id=3]
-[ext_resource path="res://Scripts/ControlsButton.gd" type="Script" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 22
@@ -111,6 +110,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+target_scene = "res://Sitting_Room.tscn"
 
 [node name="ReminderToPlay!" type="Label" parent="."]
 anchor_left = 0.5
@@ -145,10 +145,8 @@ custom_styles/focus = SubResource( 8 )
 custom_styles/disabled = SubResource( 8 )
 custom_styles/normal = SubResource( 8 )
 text = "Controls"
-script = ExtResource( 4 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_PlayButton_pressed"]
-[connection signal="pressed" from="ControlsButton" to="ControlsButton" method="_on_ControlsButton_pressed"]
+target_scene = "res://ControlScreen.tscn"

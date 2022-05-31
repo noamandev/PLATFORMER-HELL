@@ -9,9 +9,6 @@ radius = 27.0
 
 [node name="TheDepressedJanitor" type="Area2D"]
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 483, 178 )
@@ -22,12 +19,13 @@ position = Vector2( 483.75, 179.375 )
 scale = Vector2( 1.65625, 1.54687 )
 texture = ExtResource( 2 )
 
-[node name="Dialogue_Box" type="Node2D" parent="." instance=ExtResource( 3 )]
+[node name="Dialogue_Box" parent="." instance=ExtResource( 3 )]
 visible = false
-position = Vector2( 117, 91 )
-__meta__ = {
-"_edit_group_": true
-}
+position = Vector2( 227, 29 )
 
-[connection signal="body_entered" from="." to="." method="_on_TheDepressedJanitor_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_TheDepressedJanitor_body_exited"]
+[node name="speaker_name" parent="Dialogue_Box/Speaker_name" index="0"]
+margin_left = -23.5
+margin_right = 23.5
+text = "Janitor"
+
+[editable path="Dialogue_Box"]

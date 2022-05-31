@@ -11,9 +11,6 @@ radius = 28.0179
 collision_layer = 16
 collision_mask = 3
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -112, 178.7 )
@@ -26,7 +23,11 @@ shape = SubResource( 20 )
 
 [node name="Dialogue_Box" parent="." instance=ExtResource( 2 )]
 visible = false
-position = Vector2( -143, 100 )
+position = Vector2( -360, 32 )
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[node name="speaker_name" parent="Dialogue_Box/Speaker_name" index="0"]
+margin_left = -23.5
+margin_right = 23.5
+text = "Steven"
+
+[editable path="Dialogue_Box"]

@@ -36,6 +36,7 @@ animations = [ {
 
 [node name="Explosive_Barrel_" type="Area2D"]
 position = Vector2( 104, 0 )
+collision_layer = 8
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true

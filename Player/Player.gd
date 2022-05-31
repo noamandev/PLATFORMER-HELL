@@ -27,11 +27,3 @@ func _physics_process(_delta):
 		velocity.y = JUMP_FORCE
 		
 	velocity = move_and_slide(velocity, Vector2.UP)
-
-# Fallzone in Trach chute scene
-func _on_Area2D_body_entered(_body):
-	print(typeof($".".transform.x))
-	GlobalScript.coins = 0
-
-func _ENTERED_DOOR_TO_FALSE(_body):
-	GlobalScript.ENTERED_DOOR = false

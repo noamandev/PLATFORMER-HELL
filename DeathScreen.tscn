@@ -1,0 +1,144 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scripts/Stats.gd" type="Script" id=1]
+[ext_resource path="res://ASSETS/WORLD_ASSETS/Death Image.png" type="Texture" id=2]
+[ext_resource path="res://ASSETS/BBBOcelot-Regular.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://Scripts/RetryButton.gd" type="Script" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.109804, 0.109804, 0.109804, 1 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="DynamicFont" id=2]
+size = 14
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 9
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 8
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 15
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.403922, 0, 0, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_left = 1
+
+[node name="DeathScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 320.0
+margin_bottom = 180.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeathImage" type="Sprite" parent="."]
+position = Vector2( 77, 62 )
+scale = Vector2( 6, 6.5625 )
+texture = ExtResource( 2 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 135.0
+margin_top = 16.0
+margin_right = 296.0
+margin_bottom = 120.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stats" type="Label" parent="Panel"]
+anchor_right = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 10.0
+margin_bottom = 19.0
+custom_fonts/font = SubResource( 2 )
+text = "Stats:"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="coins_stat" type="Label" parent="Panel/Stats"]
+margin_left = 10.0
+margin_top = 18.0
+margin_right = 40.0
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 3 )
+text = "Coins collected: "
+
+[node name="goons_stat" type="Label" parent="Panel/Stats"]
+margin_left = 10.0
+margin_top = 30.0
+margin_right = 112.0
+margin_bottom = 44.0
+custom_fonts/font = SubResource( 3 )
+text = "Goons killed: "
+
+[node name="npc_stat" type="Label" parent="Panel/Stats"]
+margin_left = 9.0
+margin_top = 42.0
+margin_right = 111.0
+margin_bottom = 52.0
+custom_fonts/font = SubResource( 3 )
+text = "socializing level: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel"]
+margin_left = 5.0
+margin_top = 81.0
+margin_right = 113.0
+margin_bottom = 100.0
+custom_fonts/font = SubResource( 4 )
+text = "How can you die lol, 
+Gamer level: 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RetryButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = 54.0
+margin_right = 53.0
+margin_bottom = 83.0
+custom_fonts/font = SubResource( 5 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/disabled = SubResource( 6 )
+custom_styles/normal = SubResource( 6 )
+text = "RETRY"
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+target_scene = "res://Sitting_Room.tscn"

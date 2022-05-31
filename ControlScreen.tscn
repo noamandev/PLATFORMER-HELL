@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://ASSETS/BBBOcelot-Regular.otf" type="DynamicFontData" id=1]
-[ext_resource path="res://Scripts/BackButton Controls to Menu.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Button.gd" type="Script" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.443137, 0, 0, 1 )
@@ -161,5 +161,4 @@ custom_styles/disabled = SubResource( 6 )
 custom_styles/normal = SubResource( 6 )
 text = "Back"
 script = ExtResource( 2 )
-
-[connection signal="pressed" from="BackButton ( Controls -> Menu)" to="BackButton ( Controls -> Menu)" method="_on_BackButton__Controls__Menu_pressed"]
+target_scene = "res://MenuScreen.tscn"
