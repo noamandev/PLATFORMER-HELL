@@ -1,7 +1,8 @@
 # PLATFORMER-HELL
 Controls:
 
-```A - Left 
+```
+A - Left 
 D - Right 
 W - Jump 
 Spacebar - talk to npcs 
