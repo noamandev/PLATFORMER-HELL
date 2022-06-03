@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://ASSETS/UI_PROPS/Coin_Counter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ASSETS/UI_PROPS/Health.tscn" type="PackedScene" id=2]
@@ -30,6 +30,10 @@
 [ext_resource path="res://ASSETS/WORLD_ASSETS/SittingRoomChair.png" type="Texture" id=28]
 [ext_resource path="res://ASSETS/WORLD_ASSETS/SittingRoomTable2.png" type="Texture" id=29]
 [ext_resource path="res://ASSETS/WORLD_ASSETS/SittingRoomSideChair.png" type="Texture" id=30]
+[ext_resource path="res://ASSETS/Props/Triple_Light.tscn" type="PackedScene" id=31]
+[ext_resource path="res://ASSETS/Props/Chandelier.tscn" type="PackedScene" id=32]
+[ext_resource path="res://ASSETS/WORLD_ASSETS/Light_Orb.png" type="Texture" id=33]
+[ext_resource path="res://ASSETS/Props/Torch.tscn" type="PackedScene" id=34]
 
 [sub_resource type="DynamicFont" id=22]
 size = 12
@@ -40,9 +44,6 @@ extents = Vector2( 176.5, 10 )
 
 [sub_resource type="RectangleShape2D" id=26]
 extents = Vector2( 24.5, 1 )
-
-[sub_resource type="RectangleShape2D" id=27]
-extents = Vector2( 13, 1 )
 
 [sub_resource type="RectangleShape2D" id=21]
 extents = Vector2( 1.5, 17 )
@@ -137,15 +138,37 @@ position = Vector2( -27.5, 145 )
 shape = SubResource( 26 )
 one_way_collision = true
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Trash Chute/One-way collision"]
-position = Vector2( 58, 145 )
-shape = SubResource( 27 )
-one_way_collision = true
+[node name="coins_2" type="Node2D" parent="Trash Chute"]
+position = Vector2( -396, 1 )
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="Trash Chute/One-way collision"]
-position = Vector2( 111, 145 )
-shape = SubResource( 27 )
-one_way_collision = true
+[node name="COIN2" parent="Trash Chute/coins_2" instance=ExtResource( 12 )]
+position = Vector2( 415, 155 )
+collision_layer = 8
+
+[node name="COIN3" parent="Trash Chute/coins_2" instance=ExtResource( 12 )]
+position = Vector2( 369, 127 )
+collision_layer = 8
+
+[node name="lighting" type="Node2D" parent="Trash Chute"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Triple_Light" parent="Trash Chute/lighting" instance=ExtResource( 31 )]
+position = Vector2( 226, 177 )
+
+[node name="Triple_Light4" parent="Trash Chute/lighting" instance=ExtResource( 31 )]
+position = Vector2( 84, 175 )
+
+[node name="Triple_Light3" parent="Trash Chute/lighting" instance=ExtResource( 31 )]
+position = Vector2( 20, 176 )
+
+[node name="Triple_Light2" parent="Trash Chute/lighting" instance=ExtResource( 31 )]
+position = Vector2( -92, 177 )
+
+[node name="TheDepressedJanitor" parent="Trash Chute" instance=ExtResource( 14 )]
+position = Vector2( -398, 1 )
+collision_layer = 32
 
 [node name="collision" type="TileMap" parent="."]
 tile_set = ExtResource( 5 )
@@ -297,9 +320,6 @@ __meta__ = {
 [node name="Cafeteria" type="Node2D" parent="."]
 
 [node name="Cafeteria_Sprites" type="Node2D" parent="Cafeteria"]
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="CafateriaChair" type="Sprite" parent="Cafeteria/Cafeteria_Sprites"]
 position = Vector2( 1035.75, 180.5 )
@@ -340,15 +360,19 @@ texture = ExtResource( 18 )
 scale = Vector2( 0.200573, 0.419048 )
 texture = ExtResource( 17 )
 
+[node name="Light2D" type="Light2D" parent="Cafeteria/Cafeteria_Sprites/CafateriaBoard/Cafetira_Text"]
+position = Vector2( -8.39233e-05, 1.52588e-05 )
+scale = Vector2( 1.49461, 1.02202 )
+texture = ExtResource( 33 )
+color = Color( 0.639216, 0.74902, 0, 1 )
+energy = 1.2
+
 [node name="Caf_Bar" type="Sprite" parent="Cafeteria/Cafeteria_Sprites"]
 position = Vector2( 903.5, 160 )
 scale = Vector2( 2.64063, 2 )
 texture = ExtResource( 15 )
 
 [node name="One-Way Collision BABY" type="StaticBody2D" parent="Cafeteria"]
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cafeteria/One-Way Collision BABY"]
 position = Vector2( 903, 165 )
@@ -365,11 +389,6 @@ position = Vector2( 1000, 177 )
 shape = SubResource( 29 )
 one_way_collision = true
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Cafeteria/One-Way Collision BABY"]
-position = Vector2( 761, 179 )
-shape = SubResource( 30 )
-one_way_collision = true
-
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Cafeteria/One-Way Collision BABY"]
 position = Vector2( 830, 179 )
 shape = SubResource( 30 )
@@ -384,6 +403,16 @@ one_way_collision = true
 position = Vector2( 1036, 180 )
 shape = SubResource( 30 )
 one_way_collision = true
+
+[node name="coins_3" type="Node2D" parent="Cafeteria"]
+
+[node name="COIN4" parent="Cafeteria/coins_3" instance=ExtResource( 12 )]
+position = Vector2( 895, 146 )
+collision_layer = 8
+
+[node name="COIN5" parent="Cafeteria/coins_3" instance=ExtResource( 12 )]
+position = Vector2( 717, 62 )
+collision_layer = 8
 
 [node name="Barry" parent="Cafeteria" instance=ExtResource( 21 )]
 position = Vector2( 764, 179 )
@@ -405,26 +434,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="chandelier" parent="Cafeteria" instance=ExtResource( 32 )]
+
+[node name="chandelier2" parent="Cafeteria" instance=ExtResource( 32 )]
+position = Vector2( 301, -1 )
+
+[node name="Torch" parent="Cafeteria" instance=ExtResource( 34 )]
+position = Vector2( 795, 169 )
+
+[node name="Torch2" parent="Cafeteria" instance=ExtResource( 34 )]
+position = Vector2( 1001, 167 )
+
 [node name="coins_" type="Node2D" parent="."]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="COIN" parent="coins_" instance=ExtResource( 12 )]
 position = Vector2( -149, 151 )
-collision_layer = 8
-
-[node name="COIN2" parent="coins_" instance=ExtResource( 12 )]
-position = Vector2( 415, 167 )
-collision_layer = 8
-
-[node name="COIN3" parent="coins_" instance=ExtResource( 12 )]
-position = Vector2( 369, 127 )
-collision_layer = 8
-
-[node name="COIN4" parent="coins_" instance=ExtResource( 12 )]
-position = Vector2( 895, 146 )
-collision_layer = 8
-
-[node name="COIN5" parent="coins_" instance=ExtResource( 12 )]
-position = Vector2( 717, 62 )
 collision_layer = 8
 
 [node name="explosive_barrels_" type="Node2D" parent="."]
@@ -452,6 +479,9 @@ __meta__ = {
 }
 
 [node name="SittingRoomSprites" type="Node2D" parent="."]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="PlantPot" type="Sprite" parent="SittingRoomSprites"]
 position = Vector2( -149, 184 )
@@ -518,9 +548,28 @@ position = Vector2( 93.5, 181.5 )
 scale = Vector2( 1.1875, 1.3125 )
 texture = ExtResource( 29 )
 
+[node name="Lighting" type="Node2D" parent="."]
+position = Vector2( 0, -4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Triple_Light" parent="Lighting" instance=ExtResource( 31 )]
+position = Vector2( -77, 154 )
+
+[node name="Triple_Light2" parent="Lighting" instance=ExtResource( 31 )]
+position = Vector2( 24, 154 )
+
+[node name="Triple_Light3" parent="Lighting" instance=ExtResource( 31 )]
+position = Vector2( 162, 154 )
+
 [node name="Player" parent="." instance=ExtResource( 13 )]
 position = Vector2( 89, 105 )
 collision_mask = 30
+
+[node name="Light2D" parent="Player" index="2"]
+position = Vector2( -4.5, 41.5 )
+scale = Vector2( 0.283203, 0.296224 )
 
 [node name="Coin_Counter" parent="Player" instance=ExtResource( 1 )]
 position = Vector2( -272, -132 )
@@ -531,10 +580,6 @@ position = Vector2( -266, -140 )
 [node name="Gaurd_Steven" parent="." instance=ExtResource( 8 )]
 collision_layer = 32
 collision_mask = 1
-
-[node name="TheDepressedJanitor" parent="." instance=ExtResource( 14 )]
-position = Vector2( -6, 0 )
-collision_layer = 32
 
 [node name="Pigeons" type="Node2D" parent="."]
 position = Vector2( 0, 2 )
@@ -558,16 +603,19 @@ collision_mask = 3
 position = Vector2( 860, 73 )
 collision_mask = 3
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.537255, 0.537255, 0.537255, 1 )
+
 [connection signal="body_entered" from="Trash Chute/Falzone" to="Trash Chute/Falzone" method="_on_Falzone_body_entered"]
+[connection signal="coin_collected" from="Trash Chute/coins_2/COIN2" to="Player/Coin_Counter" method="_on_COIN_coin_collected"]
+[connection signal="coin_collected" from="Trash Chute/coins_2/COIN3" to="Player/Coin_Counter" method="_on_COIN_coin_collected"]
 [connection signal="body_entered" from="Doors/ACTUAL DOORS/DoorKinda Trash Chute" to="Doors/ACTUAL DOORS/DoorKinda Trash Chute" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Doors/ACTUAL DOORS/DoorKinda Cafeteria" to="Doors/ACTUAL DOORS/DoorKinda Cafeteria" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Doors/ACTUAL DOORS/DoorKinda Caf -> Trash Chute" to="Doors/ACTUAL DOORS/DoorKinda Caf -> Trash Chute" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Doors/ACTUAL DOORS/DoorKinda Sitting_Room" to="Doors/ACTUAL DOORS/DoorKinda Sitting_Room" method="_on_Area2D_body_entered"]
+[connection signal="coin_collected" from="Cafeteria/coins_3/COIN4" to="Player/Coin_Counter" method="_on_COIN_coin_collected"]
+[connection signal="coin_collected" from="Cafeteria/coins_3/COIN5" to="Player/Coin_Counter" method="_on_COIN_coin_collected"]
 [connection signal="coin_collected" from="coins_/COIN" to="Player/Coin_Counter" method="_on_COIN_coin_collected"]
-[connection signal="coin_collected" from="coins_/COIN2" to="Player/Coin_Counter" method="_on_COIN_coin_collected"]
-[connection signal="coin_collected" from="coins_/COIN3" to="Player/Coin_Counter" method="_on_COIN_coin_collected"]
-[connection signal="coin_collected" from="coins_/COIN4" to="Player/Coin_Counter" method="_on_COIN_coin_collected"]
-[connection signal="coin_collected" from="coins_/COIN5" to="Player/Coin_Counter" method="_on_COIN_coin_collected"]
 [connection signal="exploded" from="explosive_barrels_/Explosive_Barrel_" to="Player/Health" method="_on_Explosive_Barrel__exploded"]
 
 [editable path="Player"]

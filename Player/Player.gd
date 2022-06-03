@@ -7,7 +7,7 @@ export var ACCELERATION = 10
 export var JUMP_ACCELERATION = 15
 export var MAX_SPEED = 20
 export var FRICTION = 500
-export var GRAVITY = 20
+export var GRAVITY = 15
 export var JUMP_FORCE = -1200
 
 #movement script

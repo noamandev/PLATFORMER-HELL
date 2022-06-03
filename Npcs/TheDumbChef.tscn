@@ -26,4 +26,6 @@ margin_left = -16.5
 margin_right = 14.5
 text = "Chef"
 
+[connection signal="body_exited" from="." to="." method="_on_TheDumbChef_body_exited"]
+
 [editable path="Dialogue_Box"]

@@ -18,3 +18,8 @@ func _input(event):
 		GlobalScript.queue_text($Dialogue_Box, dialogue_text, queue_text, 0.05, 4)
 		if queue_text > 3:
 			queue_text = -1
+
+
+func _on_TheDepressedJanitor_body_exited(body):
+	$Dialogue_Box.visible = false
+	queue_text = -1

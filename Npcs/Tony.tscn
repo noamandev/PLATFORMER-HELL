@@ -26,4 +26,6 @@ margin_left = -16.5
 margin_right = 15.5
 text = "Tony"
 
+[connection signal="body_exited" from="." to="." method="_on_Tony_body_exited"]
+
 [editable path="Dialogue_Box"]

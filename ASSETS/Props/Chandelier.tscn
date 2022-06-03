@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ASSETS/WORLD_ASSETS/Light_Orb.png" type="Texture" id=1]
+[ext_resource path="res://ASSETS/WORLD_ASSETS/Chandelier.png" type="Texture" id=2]
+
+[node name="chandelier" type="Node2D"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="sprite" type="Sprite" parent="."]
+position = Vector2( 743, 55 )
+scale = Vector2( 1.53125, 1.375 )
+texture = ExtResource( 2 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 763, 16.5 )
+scale = Vector2( 0.609375, 0.857422 )
+texture = ExtResource( 1 )
+color = Color( 1, 0.819608, 0, 1 )

@@ -11,6 +11,9 @@ radius = 28.0179
 collision_layer = 16
 collision_mask = 3
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -112, 178.7 )
@@ -29,5 +32,7 @@ position = Vector2( -360, 32 )
 margin_left = -23.5
 margin_right = 23.5
 text = "Steven"
+
+[connection signal="body_exited" from="." to="." method="_on_Gaurd_Steven_body_exited"]
 
 [editable path="Dialogue_Box"]

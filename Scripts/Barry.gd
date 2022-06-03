@@ -23,3 +23,8 @@ func _input(event):
 		GlobalScript.queue_text($Dialogue_Box, dialogue_text, queue_text, 0.05, 8)
 		if queue_text > 7:
 			queue_text = -1
+
+
+func _on_Barry_body_exited(body):
+	$Dialogue_Box.visible = false
+	queue_text = -1
