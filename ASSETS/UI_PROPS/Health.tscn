@@ -12,7 +12,7 @@ corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
 [sub_resource type="DynamicFont" id=16]
-size = 8
+size = 7
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=17]
@@ -28,39 +28,30 @@ margin_top = 164.0
 margin_right = 258.0
 margin_bottom = 178.0
 custom_styles/panel = SubResource( 15 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="."]
-margin_left = 243.0
+margin_left = 240.0
 margin_top = 168.0
-margin_right = 283.0
+margin_right = 280.0
 margin_bottom = 182.0
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 1, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 16 )
-text = "10"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+text = "100"
 
 [node name="Label2" type="Label" parent="."]
-margin_left = 238.0
+margin_left = 236.0
 margin_top = 166.0
-margin_right = 244.0
+margin_right = 242.0
 margin_bottom = 177.0
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 1, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 17 )
 text = ":"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Heart" type="Sprite" parent="."]
-position = Vector2( 229, 170 )
+position = Vector2( 228, 170 )
 scale = Vector2( 1.1875, 1 )
 texture = ExtResource( 3 )

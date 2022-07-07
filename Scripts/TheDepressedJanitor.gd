@@ -14,7 +14,6 @@ func _input(event):
 		$Dialogue_Box.visible = true
 	if event.is_action_pressed("next_text") and get_overlapping_bodies().size() > 0:
 		queue_text += 1
-		print(queue_text)
 		GlobalScript.queue_text($Dialogue_Box, dialogue_text, queue_text, 0.05, 4)
 		if queue_text > 3:
 			queue_text = -1

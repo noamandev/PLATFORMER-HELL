@@ -44,9 +44,6 @@ corner_radius_bottom_left = 1
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 320.0
@@ -147,6 +144,15 @@ margin_right = 106.5
 margin_bottom = 156.0
 custom_fonts/font = SubResource( 4 )
 text = "Made with Godot"
+
+[node name="Label2" type="Label" parent="ColorRect/Panel"]
+margin_left = 2.5
+margin_top = 118.0
+margin_right = 190.5
+margin_bottom = 137.0
+custom_fonts/font = SubResource( 4 )
+text = "There are more controls. But youll
+figure them out ;D"
 
 [node name="BackButton ( Controls -> Menu)" type="Button" parent="."]
 margin_left = 243.0

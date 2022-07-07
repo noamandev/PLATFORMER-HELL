@@ -5,7 +5,6 @@ func _ready():
 	$".".connect("pressed", self, "change_scene")
 
 func change_scene():
-	print('Eyup')
 	var ERR = get_tree().change_scene(target_scene)
 	GlobalScript.coins = 0
 	GlobalScript.health = 10

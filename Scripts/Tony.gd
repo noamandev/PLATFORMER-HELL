@@ -35,12 +35,14 @@ func _input(event):
 							"You NEED DETERMINATION!! and BE DETERMINED!!",
 							"I BELIEVE IN YOU!"]
 			reset_point = 14
+	print(get_overlapping_bodies().size())
 	if event.is_action_pressed("next_text") and get_overlapping_bodies().size() > 2:
+		$Dialogue_Box.visible = true
 		queue_text += 1
-		print(queue_text)
 		GlobalScript.queue_text($Dialogue_Box, dialogue_text, queue_text, 0.05, reset_point + 1)
 		if queue_text > reset_point:
 			queue_text = -1
+			$Dialogue_Box.visible = false
 
 
 func _on_Tony_body_exited(body):

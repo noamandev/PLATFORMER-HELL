@@ -1,0 +1,537 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://ASSETS/WORLD_ASSETS/creepyguybattle.png" type="Texture" id=1]
+[ext_resource path="res://ASSETS/BBBOcelot-Regular.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://Scripts/Mini-Boss-Battle.gd" type="Script" id=3]
+[ext_resource path="res://ASSETS/Music/BigGuy Mad!.wav" type="AudioStream" id=4]
+[ext_resource path="res://Player/PLAYER_ASSETS/PresidentBATTLE.png" type="Texture" id=5]
+[ext_resource path="res://ASSETS/UI_PROPS/SharpAttackSword.png" type="Texture" id=6]
+[ext_resource path="res://ASSETS/UI_PROPS/DefenceShield.png" type="Texture" id=7]
+[ext_resource path="res://ASSETS/UI_PROPS/RunningAwayMan.png" type="Texture" id=8]
+[ext_resource path="res://ASSETS/UI_PROPS/BattleButtonStyle_Hover.tres" type="StyleBox" id=9]
+[ext_resource path="res://ASSETS/UI_PROPS/BattleButtonStyle.tres" type="StyleBox" id=10]
+[ext_resource path="res://ASSETS/WORLD_ASSETS/Heart.png" type="Texture" id=11]
+[ext_resource path="res://ASSETS/WORLD_ASSETS/StaminaIcon.png" type="Texture" id=12]
+
+[sub_resource type="Animation" id=14]
+resource_name = "CameraShake"
+length = 0.4
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0845479, 0.144229, 0.22629, 0.300891, 0.355599, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 4, 5 ), Vector2( -10, -7 ), Vector2( 4, -5 ), Vector2( 0, 4 ), Vector2( -5, 4 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "Mini_Shake"
+length = 0.4
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0845479, 0.164122, 0.23375, 0.300891, 0.353112, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 2, 3 ), Vector2( -5, -3 ), Vector2( 2, -1 ), Vector2( 0, 2 ), Vector2( -2, 3 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("enemycontainer/Enemy:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -5, -6 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "enemy_damaged"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("enemycontainer/Enemy:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0, 0, 0.92549 )
+border_width_left = 1
+border_width_top = 2
+border_width_right = 1
+border_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 12
+extra_spacing_top = 1
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="DynamicFont" id=10]
+size = 10
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 8
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=19]
+bg_color = Color( 1, 0.72549, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 0.682353, 0.513726, 0.129412, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="DynamicFont" id=21]
+size = 11
+extra_spacing_top = 2
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.247059, 1, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 0, 0, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.996078, 0.996078, 0.996078, 1 )
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="DynamicFont" id=3]
+size = 11
+extra_spacing_top = 3
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=16]
+size = 9
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=17]
+size = 12
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=18]
+size = 11
+font_data = ExtResource( 2 )
+
+[node name="Mini-Boss-Battle" type="Control"]
+script = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/CameraShake = SubResource( 14 )
+anims/Mini_Shake = SubResource( 15 )
+anims/RESET = SubResource( 12 )
+anims/enemy_damaged = SubResource( 13 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+position = Vector2( -5, -6 )
+anchor_mode = 0
+current = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="Background" type="ColorRect" parent="."]
+margin_right = 320.0
+margin_bottom = 180.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="action_panel" type="Panel" parent="Background"]
+anchor_right = 1.0
+custom_styles/panel = SubResource( 4 )
+
+[node name="Attack" type="Button" parent="Background/action_panel"]
+margin_left = 24.0
+margin_top = 60.0
+margin_right = 105.0
+margin_bottom = 84.0
+focus_mode = 0
+size_flags_horizontal = 3
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+custom_styles/hover = ExtResource( 10 )
+custom_styles/pressed = ExtResource( 10 )
+custom_styles/normal = ExtResource( 9 )
+enabled_focus_mode = 0
+text = "ATTACK"
+
+[node name="SharpAttackSword" type="Sprite" parent="Background/action_panel/Attack"]
+position = Vector2( -11, 11 )
+scale = Vector2( 1.5625, 1.53125 )
+texture = ExtResource( 6 )
+
+[node name="Defend" type="Button" parent="Background/action_panel"]
+margin_left = 24.0
+margin_top = 87.0
+margin_right = 106.0
+margin_bottom = 111.0
+focus_mode = 0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+custom_styles/hover = ExtResource( 10 )
+custom_styles/pressed = ExtResource( 10 )
+custom_styles/normal = ExtResource( 9 )
+enabled_focus_mode = 0
+text = "DEFEND"
+
+[node name="DefenceShield" type="Sprite" parent="Background/action_panel/Defend"]
+position = Vector2( -12, 13 )
+scale = Vector2( 1.0625, 1.21875 )
+texture = ExtResource( 7 )
+
+[node name="Run" type="Button" parent="Background/action_panel"]
+margin_left = 24.0
+margin_top = 114.0
+margin_right = 106.0
+margin_bottom = 138.0
+focus_mode = 0
+size_flags_horizontal = 3
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+custom_styles/hover = ExtResource( 10 )
+custom_styles/pressed = ExtResource( 10 )
+custom_styles/normal = ExtResource( 9 )
+enabled_focus_mode = 0
+text = "RUN "
+
+[node name="RunningAwayMan" type="Sprite" parent="Background/action_panel/Run"]
+position = Vector2( -13, 12 )
+scale = Vector2( 1.375, 1.40625 )
+texture = ExtResource( 8 )
+
+[node name="textbox" type="Panel" parent="Background"]
+visible = false
+anchor_right = 1.0
+margin_left = 7.0
+margin_top = 6.0
+margin_right = -9.0
+margin_bottom = 46.0
+custom_styles/panel = SubResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Background/textbox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+custom_fonts/font = SubResource( 10 )
+text = "Placeholder text here!"
+autowrap = true
+
+[node name="ticker container" type="Panel" parent="Background/textbox"]
+anchor_right = 1.0
+margin_left = 247.0
+margin_top = 30.0
+margin_right = 4.0
+margin_bottom = 49.0
+custom_styles/panel = SubResource( 9 )
+
+[node name="ticker" type="Label" parent="Background/textbox/ticker container"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 4.0
+margin_top = -4.0
+margin_bottom = 4.0
+custom_fonts/font = SubResource( 11 )
+text = "spacebar"
+
+[node name="player_panel" type="Panel" parent="Background"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -37.0
+custom_styles/panel = SubResource( 4 )
+
+[node name="player_data" type="HBoxContainer" parent="Background/player_panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -142.0
+margin_top = -18.5
+margin_right = 140.0
+margin_bottom = 18.5
+alignment = 1
+
+[node name="President" type="Sprite" parent="Background/player_panel/player_data"]
+position = Vector2( 111, -26 )
+scale = Vector2( 2.53125, 3.21875 )
+texture = ExtResource( 5 )
+
+[node name="stamina_bar" type="ProgressBar" parent="Background/player_panel/player_data"]
+margin_top = 10.0
+margin_right = 139.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 0, 16 )
+size_flags_horizontal = 3
+size_flags_vertical = 4
+custom_styles/fg = SubResource( 19 )
+custom_styles/bg = SubResource( 20 )
+value = 100.0
+percent_visible = false
+
+[node name="Label" type="Label" parent="Background/player_panel/player_data/stamina_bar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 21 )
+text = "STM: 100 of 100"
+align = 1
+valign = 1
+
+[node name="StaminaIcon" type="Sprite" parent="Background/player_panel/player_data/stamina_bar"]
+position = Vector2( 1, 2 )
+scale = Vector2( 1.0625, 1 )
+texture = ExtResource( 12 )
+
+[node name="Timer" type="Timer" parent="Background/player_panel/player_data/stamina_bar"]
+
+[node name="ProgressBar" type="ProgressBar" parent="Background/player_panel/player_data"]
+margin_left = 143.0
+margin_top = 10.0
+margin_right = 282.0
+margin_bottom = 26.0
+grow_horizontal = 0
+rect_min_size = Vector2( 0, 16 )
+size_flags_horizontal = 3
+size_flags_vertical = 4
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+value = 100.0
+percent_visible = false
+
+[node name="Label" type="Label" parent="Background/player_panel/player_data/ProgressBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+custom_colors/font_color_shadow = Color( 0.12549, 0.12549, 0.12549, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "HP: 100 of 100"
+align = 1
+valign = 1
+
+[node name="Heart2" type="Sprite" parent="Background/player_panel/player_data/ProgressBar"]
+modulate = Color( 0.811765, 0.811765, 0.811765, 1 )
+position = Vector2( 140, 0 )
+scale = Vector2( -1.63065, 1.36766 )
+texture = ExtResource( 11 )
+
+[node name="Action_choose_text" type="Label" parent="Background"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -119.0
+margin_top = 4.0
+margin_right = 119.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 16 )
+text = "What attack would you like to choose?"
+
+[node name="Attacks_Container" type="HBoxContainer" parent="Background"]
+anchor_right = 1.0
+margin_left = 4.0
+margin_top = 15.0
+margin_right = -4.0
+margin_bottom = 40.0
+
+[node name="Punch" type="Button" parent="Background/Attacks_Container"]
+margin_right = 101.0
+margin_bottom = 25.0
+focus_mode = 0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 17 )
+custom_styles/hover = ExtResource( 10 )
+custom_styles/pressed = ExtResource( 10 )
+custom_styles/normal = ExtResource( 9 )
+enabled_focus_mode = 0
+text = "PUNCH"
+
+[node name="Punch quantity" type="Label" parent="Background/Attacks_Container/Punch"]
+visible = false
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = 14.5
+margin_right = 102.0
+margin_bottom = 28.5
+custom_fonts/font = SubResource( 18 )
+text = "Has: 30"
+
+[node name="Kick" type="Button" parent="Background/Attacks_Container"]
+margin_left = 105.0
+margin_right = 206.0
+margin_bottom = 25.0
+focus_mode = 0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 17 )
+custom_styles/hover = ExtResource( 10 )
+custom_styles/pressed = ExtResource( 10 )
+custom_styles/normal = ExtResource( 9 )
+enabled_focus_mode = 0
+text = "KICK"
+
+[node name="Kick quantity" type="Label" parent="Background/Attacks_Container/Kick"]
+visible = false
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = 14.5
+margin_right = 102.0
+margin_bottom = 28.5
+custom_fonts/font = SubResource( 18 )
+text = "Has: 5"
+
+[node name="Uppercut" type="Button" parent="Background/Attacks_Container"]
+margin_left = 210.0
+margin_right = 312.0
+margin_bottom = 25.0
+focus_mode = 0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 17 )
+custom_styles/hover = ExtResource( 10 )
+custom_styles/pressed = ExtResource( 10 )
+custom_styles/normal = ExtResource( 9 )
+enabled_focus_mode = 0
+text = "UPPERCUT"
+
+[node name="Label" type="Label" parent="Background/Attacks_Container/Uppercut"]
+visible = false
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = 14.5
+margin_right = 102.0
+margin_bottom = 28.5
+custom_fonts/font = SubResource( 18 )
+text = "Has: 10"
+
+[node name="enemycontainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 188.0
+margin_top = 60.0
+margin_right = 306.0
+margin_bottom = 164.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="enemycontainer"]
+margin_right = 118.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 0, 16 )
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+value = 100.0
+percent_visible = false
+
+[node name="Label" type="Label" parent="enemycontainer/ProgressBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color_shadow = Color( 0.12549, 0.12549, 0.12549, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "HP: 100 of 100"
+align = 1
+valign = 1
+
+[node name="Enemy" type="TextureRect" parent="enemycontainer"]
+margin_top = 20.0
+margin_right = 118.0
+margin_bottom = 84.0
+texture = ExtResource( 1 )
+stretch_mode = 4
+
+[node name="DeathAnimation" type="Control" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="Heart" type="Sprite" parent="DeathAnimation"]
+position = Vector2( 146.5, 91 )
+scale = Vector2( 2.0625, 1.75 )
+texture = ExtResource( 11 )
+
+[connection signal="pressed" from="Background/action_panel/Attack" to="." method="_on_Attack_pressed"]
+[connection signal="pressed" from="Background/action_panel/Defend" to="." method="_on_Defend_pressed"]
+[connection signal="pressed" from="Background/action_panel/Run" to="." method="_on_Run_pressed"]
+[connection signal="timeout" from="Background/player_panel/player_data/stamina_bar/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="pressed" from="Background/Attacks_Container/Punch" to="." method="_on_Punch_pressed"]
+[connection signal="pressed" from="Background/Attacks_Container/Kick" to="." method="_on_Kick_pressed"]
+[connection signal="pressed" from="Background/Attacks_Container/Uppercut" to="." method="_on_Uppercut_pressed"]

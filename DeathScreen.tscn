@@ -50,9 +50,6 @@ __meta__ = {
 margin_right = 320.0
 margin_bottom = 180.0
 color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="DeathImage" type="Sprite" parent="."]
 position = Vector2( 77, 62 )

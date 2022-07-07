@@ -5,7 +5,7 @@ var queue_text = -1
 var STATE = false
 # Text
 var dialogue_text = ["Hi, I'm Albert. Or better known as 'The Dumb Chef'", 
-		   "That's because of my weird eye placement of my weird eye placement.",
+		   "That's because of my weird eye placement",
 		   "Hopfully you don't mock me,",
 		   "and hopefully you're nice..."]
 
@@ -15,7 +15,6 @@ func _input(event):
 		$Dialogue_Box.visible = true
 	if event.is_action_pressed("next_text") and get_overlapping_bodies().size() > 2:
 		queue_text += 1
-		print(queue_text)
 		GlobalScript.queue_text($Dialogue_Box, dialogue_text, queue_text, 0.05, 4)
 		if queue_text > 3:
 			queue_text = -1

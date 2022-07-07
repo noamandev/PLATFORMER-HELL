@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Harmonical Encounter.wav-b70e79b9dd78e0d8622c85c5f62b3ff0.sample"
+
+[deps]
+
+source_file="res://ASSETS/Music/Harmonical Encounter.wav"
+dest_files=[ "res://.import/Harmonical Encounter.wav-b70e79b9dd78e0d8622c85c5f62b3ff0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0
