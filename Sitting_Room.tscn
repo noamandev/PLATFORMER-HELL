@@ -660,6 +660,9 @@ collision_mask = 30
 position = Vector2( -4.5, 41.5 )
 scale = Vector2( 0.283203, 0.296224 )
 
+[node name="President" parent="Player" index="3"]
+frame = 0
+
 [node name="Label" parent="Player" index="5"]
 margin_top = 45.0
 margin_bottom = 61.0

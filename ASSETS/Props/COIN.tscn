@@ -19,6 +19,9 @@ animations = [ {
 [node name="COIN" type="Area2D"]
 collision_layer = 0
 script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -26,6 +29,7 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
 animation = "COIN_SPIN"
+frame = 2
 playing = true
 
 [connection signal="body_entered" from="." to="." method="_on_COIN_body_entered"]

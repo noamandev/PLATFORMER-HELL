@@ -1,6 +1,5 @@
-[gd_resource type="TileSet" load_steps=15 format=2]
+[gd_resource type="TileSet" load_steps=14 format=2]
 
-[ext_resource path="res://ASSETS/WORLD_ASSETS/Floor_Spike.png" type="Texture" id=1]
 [ext_resource path="res://ASSETS/WORLD_ASSETS/Wall_Tile.png" type="Texture" id=2]
 [ext_resource path="res://ASSETS/WORLD_ASSETS/TrashBag2.png" type="Texture" id=3]
 [ext_resource path="res://ASSETS/WORLD_ASSETS/Floor_Tile.png" type="Texture" id=4]
@@ -52,7 +51,6 @@ points = PoolVector2Array( 12.4762, 15.8409, 3.18962, 16, 4.93926, 3.86256, 11.5
 } ]
 2/z_index = 0
 4/name = "Floor_Spike.png 4"
-4/texture = ExtResource( 1 )
 4/tex_offset = Vector2( 0, 0 )
 4/modulate = Color( 1, 1, 1, 1 )
 4/region = Rect2( 0, 0, 16, 16 )

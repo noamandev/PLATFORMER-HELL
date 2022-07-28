@@ -35,7 +35,6 @@ func _input(event):
 							"You NEED DETERMINATION!! and BE DETERMINED!!",
 							"I BELIEVE IN YOU!"]
 			reset_point = 14
-	print(get_overlapping_bodies().size())
 	if event.is_action_pressed("next_text") and get_overlapping_bodies().size() > 2:
 		$Dialogue_Box.visible = true
 		queue_text += 1

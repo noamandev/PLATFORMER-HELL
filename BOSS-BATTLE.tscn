@@ -1,0 +1,559 @@
+[gd_scene load_steps=32 format=2]
+
+[ext_resource path="res://ASSETS/BBBOcelot-Regular.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://BOSS-BATTLE.gd" type="Script" id=2]
+[ext_resource path="res://Player/PLAYER_ASSETS/PresidentBATTLE.png" type="Texture" id=3]
+[ext_resource path="res://ASSETS/UI_PROPS/DefenceShield.png" type="Texture" id=4]
+[ext_resource path="res://ASSETS/WORLD_ASSETS/StaminaIcon.png" type="Texture" id=5]
+[ext_resource path="res://ASSETS/UI_PROPS/RunningAwayMan.png" type="Texture" id=6]
+[ext_resource path="res://ASSETS/WORLD_ASSETS/Heart.png" type="Texture" id=7]
+[ext_resource path="res://ASSETS/Music/BigGuy Mad!.wav" type="AudioStream" id=8]
+[ext_resource path="res://ASSETS/UI_PROPS/SharpAttackSword.png" type="Texture" id=9]
+[ext_resource path="res://ASSETS/WORLD_ASSETS/BigBadBoss.png" type="Texture" id=10]
+[ext_resource path="res://ASSETS/UI_PROPS/BattleButtonStyle_Hover.tres" type="StyleBox" id=11]
+[ext_resource path="res://ASSETS/UI_PROPS/BattleButtonStyle.tres" type="StyleBox" id=12]
+
+[sub_resource type="Animation" id=1]
+resource_name = "CameraShake"
+length = 0.4
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0845479, 0.144229, 0.22629, 0.300891, 0.355599, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 4, 5 ), Vector2( -10, -7 ), Vector2( 4, -5 ), Vector2( 0, 4 ), Vector2( -5, 4 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Enemy_died"
+tracks/0/type = "value"
+tracks/0/path = NodePath("enemycontainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Mini_Shake"
+length = 0.4
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0845479, 0.164122, 0.23375, 0.300891, 0.353112, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 2, 3 ), Vector2( -5, -3 ), Vector2( 2, -1 ), Vector2( 0, 2 ), Vector2( -2, 3 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("enemycontainer/Enemy:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -5, -6 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("enemycontainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "enemy_damaged"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("enemycontainer/Enemy:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0, 0, 0, 0.92549 )
+border_width_left = 1
+border_width_top = 2
+border_width_right = 1
+border_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 12
+extra_spacing_top = 1
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="DynamicFont" id=9]
+size = 10
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 8
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 1, 0.72549, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.682353, 0.513726, 0.129412, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="DynamicFont" id=13]
+size = 11
+extra_spacing_top = 2
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0.247059, 1, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 1, 0, 0, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.996078, 0.996078, 0.996078, 1 )
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="DynamicFont" id=16]
+size = 11
+extra_spacing_top = 3
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=17]
+size = 9
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=18]
+size = 12
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=19]
+size = 11
+font_data = ExtResource( 1 )
+
+[node name="BOSS-BATTLE" type="Control"]
+script = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/CameraShake = SubResource( 1 )
+anims/Enemy_died = SubResource( 2 )
+anims/Mini_Shake = SubResource( 3 )
+anims/RESET = SubResource( 4 )
+anims/enemy_damaged = SubResource( 5 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+position = Vector2( -5, -6 )
+anchor_mode = 0
+current = true
+
+[node name="bg music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true
+
+[node name="Background" type="ColorRect" parent="."]
+margin_right = 320.0
+margin_bottom = 180.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="action_panel" type="Panel" parent="Background"]
+anchor_right = 1.0
+custom_styles/panel = SubResource( 6 )
+
+[node name="Attack" type="Button" parent="Background/action_panel"]
+margin_left = 24.0
+margin_top = 60.0
+margin_right = 105.0
+margin_bottom = 84.0
+focus_mode = 0
+size_flags_horizontal = 3
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = ExtResource( 12 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/normal = ExtResource( 11 )
+enabled_focus_mode = 0
+text = "ATTACK"
+
+[node name="SharpAttackSword" type="Sprite" parent="Background/action_panel/Attack"]
+position = Vector2( -11, 11 )
+scale = Vector2( 1.5625, 1.53125 )
+texture = ExtResource( 9 )
+
+[node name="Defend" type="Button" parent="Background/action_panel"]
+margin_left = 24.0
+margin_top = 87.0
+margin_right = 106.0
+margin_bottom = 111.0
+focus_mode = 0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = ExtResource( 12 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/normal = ExtResource( 11 )
+enabled_focus_mode = 0
+text = "DEFEND"
+
+[node name="DefenceShield" type="Sprite" parent="Background/action_panel/Defend"]
+position = Vector2( -12, 13 )
+scale = Vector2( 1.0625, 1.21875 )
+texture = ExtResource( 4 )
+
+[node name="Run" type="Button" parent="Background/action_panel"]
+margin_left = 24.0
+margin_top = 114.0
+margin_right = 106.0
+margin_bottom = 138.0
+focus_mode = 0
+size_flags_horizontal = 3
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = ExtResource( 12 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/normal = ExtResource( 11 )
+enabled_focus_mode = 0
+text = "RUN "
+
+[node name="RunningAwayMan" type="Sprite" parent="Background/action_panel/Run"]
+position = Vector2( -13, 12 )
+scale = Vector2( 1.375, 1.40625 )
+texture = ExtResource( 6 )
+
+[node name="textbox" type="Panel" parent="Background"]
+visible = false
+anchor_right = 1.0
+margin_left = 7.0
+margin_top = 6.0
+margin_right = -9.0
+margin_bottom = 46.0
+custom_styles/panel = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Background/textbox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+custom_fonts/font = SubResource( 9 )
+text = "Placeholder text here!"
+autowrap = true
+
+[node name="ticker container" type="Panel" parent="Background/textbox"]
+anchor_right = 1.0
+margin_left = 247.0
+margin_top = 30.0
+margin_right = 4.0
+margin_bottom = 49.0
+custom_styles/panel = SubResource( 8 )
+
+[node name="ticker" type="Label" parent="Background/textbox/ticker container"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 4.0
+margin_top = -4.0
+margin_bottom = 4.0
+custom_fonts/font = SubResource( 10 )
+text = "spacebar"
+
+[node name="player_panel" type="Panel" parent="Background"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -37.0
+custom_styles/panel = SubResource( 6 )
+
+[node name="player_data" type="HBoxContainer" parent="Background/player_panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -142.0
+margin_top = -18.5
+margin_right = 140.0
+margin_bottom = 18.5
+alignment = 1
+
+[node name="President" type="Sprite" parent="Background/player_panel/player_data"]
+position = Vector2( 102.375, -14.625 )
+scale = Vector2( 1.45312, 1.79687 )
+texture = ExtResource( 3 )
+
+[node name="stamina_bar" type="ProgressBar" parent="Background/player_panel/player_data"]
+margin_top = 10.0
+margin_right = 139.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 0, 16 )
+size_flags_horizontal = 3
+size_flags_vertical = 4
+custom_styles/fg = SubResource( 11 )
+custom_styles/bg = SubResource( 12 )
+value = 100.0
+percent_visible = false
+
+[node name="Label" type="Label" parent="Background/player_panel/player_data/stamina_bar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 13 )
+text = "STM: 100 of 100"
+align = 1
+valign = 1
+
+[node name="StaminaIcon" type="Sprite" parent="Background/player_panel/player_data/stamina_bar"]
+position = Vector2( 1, 2 )
+scale = Vector2( 1.0625, 1 )
+texture = ExtResource( 5 )
+
+[node name="Timer" type="Timer" parent="Background/player_panel/player_data/stamina_bar"]
+
+[node name="ProgressBar" type="ProgressBar" parent="Background/player_panel/player_data"]
+margin_left = 143.0
+margin_top = 10.0
+margin_right = 282.0
+margin_bottom = 26.0
+grow_horizontal = 0
+rect_min_size = Vector2( 0, 16 )
+size_flags_horizontal = 3
+size_flags_vertical = 4
+custom_styles/fg = SubResource( 14 )
+custom_styles/bg = SubResource( 15 )
+value = 100.0
+percent_visible = false
+
+[node name="Label" type="Label" parent="Background/player_panel/player_data/ProgressBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+custom_colors/font_color_shadow = Color( 0.12549, 0.12549, 0.12549, 1 )
+custom_fonts/font = SubResource( 16 )
+text = "HP: 100 of 100"
+align = 1
+valign = 1
+
+[node name="Heart2" type="Sprite" parent="Background/player_panel/player_data/ProgressBar"]
+modulate = Color( 0.811765, 0.811765, 0.811765, 1 )
+position = Vector2( 140, 0 )
+scale = Vector2( -1.63065, 1.36766 )
+texture = ExtResource( 7 )
+
+[node name="Action_choose_text" type="Label" parent="Background"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -119.0
+margin_top = 4.0
+margin_right = 119.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 17 )
+text = "What attack would you like to choose?"
+
+[node name="Attacks_Container" type="HBoxContainer" parent="Background"]
+anchor_right = 1.0
+margin_left = 4.0
+margin_top = 15.0
+margin_right = -4.0
+margin_bottom = 40.0
+
+[node name="Punch" type="Button" parent="Background/Attacks_Container"]
+margin_right = 101.0
+margin_bottom = 25.0
+focus_mode = 0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 18 )
+custom_styles/hover = ExtResource( 12 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/normal = ExtResource( 11 )
+enabled_focus_mode = 0
+text = "PUNCH"
+
+[node name="Punch quantity" type="Label" parent="Background/Attacks_Container/Punch"]
+visible = false
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = 14.5
+margin_right = 102.0
+margin_bottom = 28.5
+custom_fonts/font = SubResource( 19 )
+text = "Has: 30"
+
+[node name="Kick" type="Button" parent="Background/Attacks_Container"]
+margin_left = 105.0
+margin_right = 206.0
+margin_bottom = 25.0
+focus_mode = 0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 18 )
+custom_styles/hover = ExtResource( 12 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/normal = ExtResource( 11 )
+enabled_focus_mode = 0
+text = "KICK"
+
+[node name="Kick quantity" type="Label" parent="Background/Attacks_Container/Kick"]
+visible = false
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = 14.5
+margin_right = 102.0
+margin_bottom = 28.5
+custom_fonts/font = SubResource( 19 )
+text = "Has: 5"
+
+[node name="Uppercut" type="Button" parent="Background/Attacks_Container"]
+margin_left = 210.0
+margin_right = 312.0
+margin_bottom = 25.0
+focus_mode = 0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 18 )
+custom_styles/hover = ExtResource( 12 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/normal = ExtResource( 11 )
+enabled_focus_mode = 0
+text = "UPPERCUT"
+
+[node name="Label" type="Label" parent="Background/Attacks_Container/Uppercut"]
+visible = false
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = 14.5
+margin_right = 102.0
+margin_bottom = 28.5
+custom_fonts/font = SubResource( 19 )
+text = "Has: 10"
+
+[node name="enemycontainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 149.0
+margin_top = 43.0
+margin_right = 316.0
+margin_bottom = 194.0
+rect_scale = Vector2( 1, 1.16 )
+
+[node name="ProgressBar" type="ProgressBar" parent="enemycontainer"]
+margin_right = 167.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 0, 16 )
+custom_styles/fg = SubResource( 14 )
+custom_styles/bg = SubResource( 15 )
+value = 100.0
+percent_visible = false
+
+[node name="Label" type="Label" parent="enemycontainer/ProgressBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color_shadow = Color( 0.12549, 0.12549, 0.12549, 1 )
+custom_fonts/font = SubResource( 16 )
+text = "HP: 100 of 100"
+align = 1
+valign = 1
+
+[node name="BigBadBoss" type="Sprite" parent="enemycontainer"]
+modulate = Color( 1, 1, 1, 0.2 )
+position = Vector2( 113, 52 )
+texture = ExtResource( 10 )
+
+[node name="BigBadBoss2" type="Sprite" parent="enemycontainer"]
+modulate = Color( 1, 1, 1, 0.184314 )
+position = Vector2( 63, 53 )
+texture = ExtResource( 10 )
+
+[node name="Enemy" type="Sprite" parent="enemycontainer"]
+position = Vector2( 86, 52.5862 )
+texture = ExtResource( 10 )
+
+[connection signal="pressed" from="Background/action_panel/Attack" to="." method="_on_Attack_pressed"]
+[connection signal="pressed" from="Background/action_panel/Defend" to="." method="_on_Defend_pressed"]
+[connection signal="pressed" from="Background/action_panel/Run" to="." method="_on_Run_pressed"]
+[connection signal="timeout" from="Background/player_panel/player_data/stamina_bar/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="pressed" from="Background/Attacks_Container/Punch" to="." method="_on_Punch_pressed"]
+[connection signal="pressed" from="Background/Attacks_Container/Kick" to="." method="_on_Kick_pressed"]
+[connection signal="pressed" from="Background/Attacks_Container/Uppercut" to="." method="_on_Uppercut_pressed"]

@@ -1,6 +1,11 @@
 extends Node
 
-var coins = 0
+
+# achivement vars
+var didDoFirstBattle : bool = false
+var didCollectCoin : bool = false
+# default vars
+var coins : int = 0
 var max_health = 100
 var health = 100
 var damage = 5
@@ -8,7 +13,7 @@ var goons_killed = 0
 var socializationXP = 0
 var ENTERED_DOOR : bool
 
-# warning-ignore:shadowed_variable
+# dialogue functionallity?
 func queue_text(dialogue_box: Node, text, queue_text_max, CHAR_READ_RATE: float, reset_point):
 	if queue_text_max >= reset_point:
 		dialogue_box.visible = false

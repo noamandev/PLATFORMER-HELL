@@ -3,6 +3,7 @@ extends Control
 signal text_box_closed
 signal chose_attack
 signal enemy_finished_attack
+signal enemy_died
 
 # Actions left
 var isAttacking = false
@@ -23,7 +24,8 @@ var voice_line_number : int
 
 # variables
 onready var stamina_points = 1
-onready var enemy_health = 200
+onready var enemy_name = "Creepy Guy"
+onready var enemy_health = 1
 var enemy_attacks = [
 	{
 		"name": "Basic Punch",
@@ -38,7 +40,7 @@ var enemy_attacks = [
 		"damage": 6
 	}
 ]
-onready var player_health = 5
+onready var player_health = 100
 var player_dmg = 10
 var is_defending : bool = false
 
@@ -52,7 +54,7 @@ func _process(_delta):
 	else: set_text($Background/player_panel/player_data/stamina_bar, 100, stamina_points)	
 	
 func _ready():
-	$Background/player_panel/player_data/stamina_bar/Timer.set_wait_time(0.01)
+	$Background/player_panel/player_data/stamina_bar/Timer.set_wait_time(0.27)
 	$Background/player_panel/player_data/stamina_bar/Timer.start()
 	$Camera2D.position.x = 0
 	$Camera2D.position.y = 0
@@ -144,6 +146,15 @@ func _on_Attack_pressed():
 		
 	display_text(voice_lines[7]) #"What a hit by you!"
 	yield(self, "text_box_closed")
+	
+	if enemy_health == 0:
+		display_text("%s has fainted" % enemy_name)
+		yield(self, "text_box_closed")
+		$AnimationPlayer.play("Enemy_died")
+		yield($AnimationPlayer, "animation_finished")
+		GlobalScript.didDoFirstBattle = true
+		yield(get_tree().create_timer(2), "timeout")
+		get_tree().change_scene("res://EndCreditsScene.tscn")
 	player_dmg = 5
 	enemy_turn()
 # run away like a coward!
@@ -191,3 +202,4 @@ func _on_Uppercut_pressed():
 # increase stamina points
 func _on_Timer_timeout():
 	stamina_points += 1
+

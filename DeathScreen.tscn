@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/Stats.gd" type="Script" id=1]
 [ext_resource path="res://ASSETS/WORLD_ASSETS/Death Image.png" type="Texture" id=2]
 [ext_resource path="res://ASSETS/BBBOcelot-Regular.otf" type="DynamicFontData" id=3]
 [ext_resource path="res://Scripts/RetryButton.gd" type="Script" id=4]
+[ext_resource path="res://Sitting_Room.tscn" type="PackedScene" id=5]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.109804, 0.109804, 0.109804, 1 )
@@ -42,9 +43,6 @@ corner_radius_bottom_left = 1
 [node name="DeathScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 320.0
@@ -138,4 +136,4 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-target_scene = "res://Sitting_Room.tscn"
+target_scene = ExtResource( 5 )

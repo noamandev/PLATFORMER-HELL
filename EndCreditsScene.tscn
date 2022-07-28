@@ -1,0 +1,118 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://ASSETS/WORLD_ASSETS/FREEDOM_BG.png" type="Texture" id=1]
+[ext_resource path="res://ASSETS/BBBOcelot-Regular.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://ASSETS/Music/Sunlight!.wav" type="AudioStream" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 14
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 10
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 7
+font_data = ExtResource( 2 )
+
+[node name="Control" type="Control"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color( 0.309804, 0.309804, 0.309804, 1 )
+margin_right = 320.0
+margin_bottom = 180.0
+texture = ExtResource( 1 )
+
+[node name="designer" type="Label" parent="."]
+margin_left = 30.0
+margin_top = 37.0
+margin_right = 130.0
+margin_bottom = 52.0
+custom_colors/font_color = Color( 0.992157, 1, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "DESIGNER"
+
+[node name="designer_C" type="Label" parent="designer"]
+margin_top = 16.0
+margin_right = 105.0
+margin_bottom = 31.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "@PuppetMarion"
+
+[node name="coder" type="Label" parent="."]
+margin_left = 154.0
+margin_top = 37.0
+margin_right = 293.0
+margin_bottom = 52.0
+custom_colors/font_color = Color( 0.992157, 1, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "PROGRAMMER"
+
+[node name="code_c" type="Label" parent="coder"]
+margin_left = 15.0
+margin_top = 16.0
+margin_right = 120.0
+margin_bottom = 31.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "@PuppetMarion"
+
+[node name="artist" type="Label" parent="."]
+margin_left = 53.0
+margin_top = 97.0
+margin_right = 192.0
+margin_bottom = 112.0
+custom_colors/font_color = Color( 0.992157, 1, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "ARTIST"
+
+[node name="artist_c" type="Label" parent="artist"]
+margin_left = -17.0
+margin_top = 18.0
+margin_right = 88.0
+margin_bottom = 33.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "@PuppetMarion"
+
+[node name="artist2" type="Label" parent="."]
+margin_left = 183.0
+margin_top = 97.0
+margin_right = 322.0
+margin_bottom = 112.0
+custom_colors/font_color = Color( 0.992157, 1, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "MUSIC "
+
+[node name="artist_c" type="Label" parent="artist2"]
+margin_left = -17.0
+margin_top = 18.0
+margin_right = 88.0
+margin_bottom = 33.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "@PuppetMarion"
+
+[node name="thanks" type="Label" parent="."]
+margin_left = 85.0
+margin_top = 155.0
+margin_right = 224.0
+margin_bottom = 170.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Thanks for playing :D!"
+
+[node name="made with" type="Label" parent="."]
+margin_left = 20.0
+margin_top = 168.0
+margin_right = 407.0
+margin_bottom = 183.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "\\Now you shall clense your eyeballs for what you witnessed!"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true

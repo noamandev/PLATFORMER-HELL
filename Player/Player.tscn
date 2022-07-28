@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player/PLAYER_ASSETS/Standing.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -8,10 +8,6 @@
 [ext_resource path="res://Player/PLAYER_ASSETS/President Walk/Walk_Animation3.png" type="Texture" id=6]
 [ext_resource path="res://Player/PLAYER_ASSETS/President Walk/Walk_Animation4.png" type="Texture" id=7]
 [ext_resource path="res://Player/PLAYER_ASSETS/President Walk/Walk_Animation.png" type="Texture" id=8]
-[ext_resource path="res://Player/PLAYER_ASSETS/President PUNCH!/President Punch3.png" type="Texture" id=9]
-[ext_resource path="res://Player/PLAYER_ASSETS/President PUNCH!/President Punch1.png" type="Texture" id=10]
-[ext_resource path="res://Player/PLAYER_ASSETS/President PUNCH!/President Punch2.png" type="Texture" id=11]
-[ext_resource path="res://Player/PLAYER_ASSETS/President PUNCH!/President Punch4.png" type="Texture" id=12]
 [ext_resource path="res://ASSETS/BBBOcelot-Regular.otf" type="DynamicFontData" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -19,9 +15,9 @@ extents = Vector2( 7, 10.5 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 1 ) ],
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
-"name": "Idle",
+"name": "Walking",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ) ],
@@ -29,19 +25,11 @@ animations = [ {
 "name": "Jump",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"frames": [ ExtResource( 1 ) ],
 "loop": true,
-"name": "Walking",
+"name": "Idle",
 "speed": 5.0
-}, {
-"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 9 ), ExtResource( 12 ) ],
-"loop": true,
-"name": "Punch",
-"speed": 9.0
 } ]
-
-[sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 3.5, 5 )
 
 [sub_resource type="DynamicFont" id=10]
 size = 10
@@ -72,7 +60,7 @@ scale = Vector2( 0.591442, 0.34798 )
 enabled = true
 exclude_parent = false
 cast_to = Vector2( 0, 30 )
-collision_mask = 2
+collision_mask = 34
 
 [node name="President" type="AnimatedSprite" parent="."]
 position = Vector2( -6, 53 )
@@ -81,17 +69,6 @@ frames = SubResource( 2 )
 animation = "Walking"
 frame = 3
 playing = true
-
-[node name="Hitbox" type="Area2D" parent="."]
-position = Vector2( -2, 0 )
-rotation = -0.139626
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2( 1, 55 )
-shape = SubResource( 9 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = -35.0
@@ -105,6 +82,3 @@ text = "PUNCH!!  "
 percent_visible = 0.0
 
 [node name="Tween" type="Tween" parent="."]
-
-[connection signal="animation_finished" from="President" to="." method="_on_President_animation_finished"]
-[connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]
